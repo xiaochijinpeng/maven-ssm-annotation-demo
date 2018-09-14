@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.FilterType;
 
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
@@ -62,5 +64,23 @@ public class ApplicationContextConfig {
         // 为 Mapper Scanner Configure Bean 设置 SQL Session Factory Bean 名称
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         return mapperScannerConfigurer;
+    }
+
+    /**
+     * Transaction Manager Bean 配置
+     *
+     * @param dataSource 数据源 Bean
+     * {@link DataSourceConfig 数据源配置类}
+     * @return Transaction Manager Bean
+     */
+    @Bean
+    public DataSourceTransactionManager transactionManager (DataSource dataSource) {
+
+        // 定义 Transaction Manager Bean
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+
+        // 为 Transaction Manager Bean 设置数据源
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
     }
 }
