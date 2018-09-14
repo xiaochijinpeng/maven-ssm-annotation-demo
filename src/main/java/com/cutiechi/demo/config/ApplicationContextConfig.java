@@ -2,6 +2,8 @@ package com.cutiechi.demo.config;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
 
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -44,5 +46,21 @@ public class ApplicationContextConfig {
         // 为 SQL Session Factory Bean 设置数据源
         sqlSessionFactoryBean.setDataSource(dataSource);
         return sqlSessionFactoryBean;
+    }
+
+    /**
+     * Mapper Scanner Configure Bean 配置
+     *
+     * @return Mapper Scanner Configure Bean
+     */
+    @Bean
+    public MapperScannerConfigurer mapperScannerConfigurer () {
+
+        // 定义 Mapper Scanner Configure Bean
+        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
+
+        // 为 Mapper Scanner Configure Bean 设置 SQL Session Factory Bean 名称
+        mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
+        return mapperScannerConfigurer;
     }
 }
