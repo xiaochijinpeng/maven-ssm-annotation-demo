@@ -21,13 +21,25 @@ public class WebAppConfig extends AbstractAnnotationConfigDispatcherServletIniti
         };
     }
 
+    /**
+     * 加载 Spring MVC Dispatcher Servlet 配置
+     *
+     * {@link DispatcherServletConfig}
+     */
     @Override
     protected Class<?>[] getServletConfigClasses () {
-        return new Class[0];
+        return new Class[]{
+            DispatcherServletConfig.class
+        };
     }
 
+    /**
+     * 配置 Spring MVC Dispatcher Servlet 的 Mapping 为 /
+     */
     @Override
     protected String[] getServletMappings () {
-        return new String[0];
+        return new String[]{
+            "/"
+        };
     }
 }
