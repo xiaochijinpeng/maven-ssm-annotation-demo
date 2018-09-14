@@ -3,7 +3,7 @@ package com.cutiechi.demo.config;
 import org.apache.ibatis.session.Configuration;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.mybatis.spring.annotation.MapperScan;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,6 +30,7 @@ import javax.sql.DataSource;
         @Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)
     }
 )
+@MapperScan("com.cutiechi.demo.dao")
 public class ApplicationContextConfig {
 
     /**
@@ -60,25 +61,6 @@ public class ApplicationContextConfig {
         // 为 SQL Session Factory Bean 设置 Mybatis 配置
         sqlSessionFactoryBean.setConfiguration(configuration);
         return sqlSessionFactoryBean;
-    }
-
-    /**
-     * Mapper Scanner Configure Bean 配置
-     *
-     * @return Mapper Scanner Configure Bean
-     */
-    @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer () {
-
-        // 定义 Mapper Scanner Configure Bean
-        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-
-        // 为 Mapper Scanner Configure Bean 设置 SQL Session Factory Bean 名称
-        mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-
-        // 为 Mapper Scanner Configure Bean 设置基础包
-        mapperScannerConfigurer.setBasePackage("com.cutiechi.demo.dao");
-        return mapperScannerConfigurer;
     }
 
     /**
