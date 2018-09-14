@@ -66,6 +66,9 @@ public class ApplicationContextConfig {
 
         // 为 Mapper Scanner Configure Bean 设置 SQL Session Factory Bean 名称
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
+
+        // 为 Mapper Scanner Configure Bean 设置基础包
+        mapperScannerConfigurer.setBasePackage("com.cutiechi.demo.dao");
         return mapperScannerConfigurer;
     }
 
