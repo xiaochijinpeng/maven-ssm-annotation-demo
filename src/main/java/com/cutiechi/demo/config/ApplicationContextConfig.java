@@ -12,6 +12,8 @@ import org.springframework.context.annotation.FilterType;
 
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
+import org.springframework.stereotype.Controller;
+
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.sql.DataSource;
@@ -27,7 +29,8 @@ import javax.sql.DataSource;
         "com.cutiechi.demo"
     },
     excludeFilters = {
-        @Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)
+        @Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class),
+        @Filter(type = FilterType.ANNOTATION, value = Controller.class)
     }
 )
 @MapperScan("com.cutiechi.demo.dao")
