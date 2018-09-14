@@ -1,5 +1,6 @@
 package com.cutiechi.demo.config;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Cutie Chi
  */
 @Configuration
+@ComponentScan("com.cutiechi.demo")
 public class ApplicationContextConfig {
 
 }
