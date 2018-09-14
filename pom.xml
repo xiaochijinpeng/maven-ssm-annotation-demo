@@ -20,6 +20,11 @@
             <version>5.3.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.0.9.RELEASE</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>maven-ssm-annotation-demo</finalName>
