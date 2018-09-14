@@ -1,12 +1,12 @@
 package com.cutiechi.demo.config;
 
-import org.mybatis.spring.SqlSessionFactoryBean;
+import org.apache.ibatis.session.Configuration;
 
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.FilterType;
 
@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  *
  * @author Cutie Chi
  */
-@Configuration
+@org.springframework.context.annotation.Configuration
 @ComponentScan(
     basePackages = {
         "com.cutiechi.demo"
@@ -50,6 +50,12 @@ public class ApplicationContextConfig {
 
         // 为 SQL Session Factory Bean 设置类型别名包
         sqlSessionFactoryBean.setTypeAliasesPackage("com.cutiechi.demo.model.entity");
+
+        // 定义 Mybatis Session Configuration
+        Configuration configuration = new Configuration();
+
+        // 开启 Mybatis 下划线转驼峰
+        configuration.setMapUnderscoreToCamelCase(true);
         return sqlSessionFactoryBean;
     }
 
