@@ -56,6 +56,9 @@ public class ApplicationContextConfig {
 
         // 开启 Mybatis 下划线转驼峰
         configuration.setMapUnderscoreToCamelCase(true);
+
+        // 为 SQL Session Factory Bean 设置 Mybatis 配置
+        sqlSessionFactoryBean.setConfiguration(configuration);
         return sqlSessionFactoryBean;
     }
 
