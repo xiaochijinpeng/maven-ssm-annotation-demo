@@ -9,9 +9,16 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  */
 public class WebAppConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+    /**
+     * 加载 Spring Application Context 配置
+     *
+     * {@link ApplicationContextConfig}
+     */
     @Override
     protected Class<?>[] getRootConfigClasses () {
-        return new Class[0];
+        return new Class[]{
+            ApplicationContextConfig.class
+        };
     }
 
     @Override
