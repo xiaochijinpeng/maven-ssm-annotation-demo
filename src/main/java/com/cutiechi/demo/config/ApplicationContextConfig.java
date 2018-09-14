@@ -2,6 +2,10 @@ package com.cutiechi.demo.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ComponentScan.Filter;
+import org.springframework.context.annotation.FilterType;
+
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
  * Spring Application Context 配置类
@@ -9,7 +13,14 @@ import org.springframework.context.annotation.Configuration;
  * @author Cutie Chi
  */
 @Configuration
-@ComponentScan("com.cutiechi.demo")
+@ComponentScan(
+    basePackages = {
+        "com.cutiechi.demo"
+    },
+    excludeFilters = {
+        @Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)
+    }
+)
 public class ApplicationContextConfig {
 
 }
